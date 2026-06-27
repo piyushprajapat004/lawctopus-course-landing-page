@@ -1,0 +1,11 @@
+/**
+ * Public assets directory structure:
+ *
+ * public/
+ * ├── images/          ← Static images (logo, hero backgrounds, etc.)
+ * ├── icons/           ← Favicon, apple-touch-icon, etc.
+ * └── og-image.jpg     ← Open Graph preview image (1200×630)
+ *
+ * Reference in code:   <Image src="/images/logo.svg" ... />
+ * These files are served at the root URL path.
+ */
