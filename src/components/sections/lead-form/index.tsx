@@ -40,7 +40,7 @@ export function LeadFormSection() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { error: submitError } = await (supabase.from("lead_submissions") as any).insert([
         {
-          name: data.fullName,
+          full_name: data.fullName,
           email: data.email,
           phone: data.phone,
         },
