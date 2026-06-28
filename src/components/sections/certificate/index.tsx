@@ -104,14 +104,16 @@ export function CertificateSection() {
               </div>
             </div>
             
-            {/* MBG Badge floating */}
-            <div className="absolute -bottom-6 -right-6 md:-right-12 bg-background border border-border shadow-xl p-4 rounded-2xl flex items-center gap-4 z-20 transform hover:-translate-y-2 transition-transform duration-300">
-              <div className="bg-primary/10 p-3 rounded-xl text-primary">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <div>
-                <p className="font-bold text-sm">100% Refund</p>
-                <p className="text-xs text-muted-foreground">Money-Back Guarantee</p>
+            {/* MBG Badge — relative on mobile, floating on desktop */}
+            <div className="mt-6 flex justify-center md:block md:mt-0 md:absolute md:-bottom-6 md:-right-12">
+              <div className="bg-background border border-border shadow-xl p-4 rounded-2xl flex items-center gap-4 z-20 transform hover:-translate-y-2 transition-transform duration-300">
+                <div className="bg-primary/10 p-3 rounded-xl text-primary">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="font-bold text-sm">100% Refund</p>
+                  <p className="text-xs text-muted-foreground">Money-Back Guarantee</p>
+                </div>
               </div>
             </div>
           </motion.div>

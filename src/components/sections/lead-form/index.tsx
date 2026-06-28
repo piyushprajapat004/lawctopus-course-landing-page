@@ -73,7 +73,7 @@ export function LeadFormSection() {
   };
 
   return (
-    <section id="lead-form" className="relative py-24 md:py-32 overflow-hidden bg-background">
+    <section id="lead-form" className="relative py-24 md:py-32 pb-32 lg:pb-32 overflow-hidden bg-background">
       {/* Blend background from pricing spotlight seamlessly */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-background to-background -z-10 pointer-events-none" />
 
@@ -132,7 +132,7 @@ export function LeadFormSection() {
             viewport={{ once: true }}
             className="w-full"
           >
-            <div className="rounded-[2.5rem] border border-border/40 bg-card/60 p-8 md:p-12 shadow-2xl backdrop-blur-md relative overflow-hidden">
+            <div className="rounded-[2.5rem] border border-border/40 bg-card/60 p-6 sm:p-8 md:p-12 shadow-2xl backdrop-blur-md relative overflow-hidden">
               {/* Subtle highlight effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
               

@@ -52,7 +52,6 @@ export default function HomePage() {
         <PricingSection />
         <ExploreProgramsSection />
         <FAQSection />
-        <TrustCTA title="Still have questions?" subtitle="Our support team is here to help you make the right choice." />
         <SupportSection />
         <LeadFormSection />
       </main>

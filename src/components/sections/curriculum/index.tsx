@@ -21,7 +21,7 @@ export function CurriculumSection() {
   });
 
   return (
-    <section className="relative py-24 md:py-32 bg-background overflow-hidden border-y border-border/30">
+    <section className="relative py-16 md:py-24 lg:py-32 bg-background overflow-hidden border-y border-border/30">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-primary/5 via-background to-background pointer-events-none" />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,7 +30,7 @@ export function CurriculumSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mx-auto max-w-3xl text-center mb-24"
+          className="mx-auto max-w-3xl text-center mb-12 md:mb-16 lg:mb-24"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tighter text-foreground mb-4">
             {curriculumContent.title}

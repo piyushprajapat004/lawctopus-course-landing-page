@@ -80,19 +80,19 @@ export function ComparisonSection() {
                 {feature.name}
               </h3>
               
-              <div className="flex justify-between items-center text-sm">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm gap-1 sm:gap-0">
                 <span className="text-muted-foreground">Internships</span>
-                <span className="text-foreground/80 font-medium text-right w-1/2">{feature.internship}</span>
+                <span className="text-foreground/80 font-medium sm:text-right">{feature.internship}</span>
               </div>
               
-              <div className="flex justify-between items-center text-sm">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm gap-1 sm:gap-0">
                 <span className="text-muted-foreground">Summer Schools</span>
-                <span className="text-foreground/80 font-medium text-right w-1/2">{feature.summerSchool}</span>
+                <span className="text-foreground/80 font-medium sm:text-right">{feature.summerSchool}</span>
               </div>
               
-              <div className="flex justify-between items-center text-sm p-4 bg-primary/5 rounded-xl border border-primary/10 mt-2">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm p-4 bg-primary/5 rounded-xl border border-primary/10 mt-2 gap-2 sm:gap-0">
                 <span className="font-semibold text-foreground">Lawctopus Program</span>
-                <span className="text-primary font-bold text-right w-1/2 flex items-center justify-end gap-2">
+                <span className="text-primary font-bold sm:text-right flex items-center sm:justify-end gap-2">
                   {feature.lawctopus}
                   <CheckCircle2 className="w-4 h-4 shrink-0" />
                 </span>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { whatsappConfig } from "@/content/whatsapp";
 
@@ -39,6 +39,22 @@ function WhatsAppIcon({ size = 28 }: { size?: number }) {
  */
 export function FloatingWhatsApp() {
   const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const leadFormElement = document.getElementById("lead-form");
+      if (leadFormElement) {
+        const rect = leadFormElement.getBoundingClientRect();
+        const isLeadFormVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+        setIsVisible(!isLeadFormVisible);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Graceful degradation: hide the button when env var is missing
   if (!whatsappConfig.url) {
@@ -46,8 +62,11 @@ export function FloatingWhatsApp() {
   }
 
   return (
-    <div
-      className="fixed right-6 bottom-6 z-50 flex items-center gap-3"
+    <AnimatePresence>
+      {isVisible && (
+        <div
+
+      className="fixed right-6 bottom-24 lg:bottom-6 z-50 flex items-center gap-3"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -111,6 +130,8 @@ export function FloatingWhatsApp() {
           <WhatsAppIcon size={28} />
         </span>
       </motion.a>
-    </div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 }
