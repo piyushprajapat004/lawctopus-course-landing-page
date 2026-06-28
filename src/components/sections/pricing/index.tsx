@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 export function PricingSection() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-background">
+    <section id="pricing" className="relative py-24 md:py-32 overflow-hidden bg-background scroll-mt-32">
       {/* Dramatic Spotlight Effect */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-[conic-gradient(from_180deg_at_50%_0%,transparent_0deg,rgba(var(--primary-rgb),0.05)_120deg,rgba(var(--primary-rgb),0.15)_180deg,rgba(var(--primary-rgb),0.05)_240deg,transparent_360deg)] pointer-events-none -z-10 opacity-70" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[conic-gradient(from_180deg_at_50%_0%,transparent_0deg,rgba(255,255,255,0.02)_120deg,rgba(255,255,255,0.05)_180deg,rgba(255,255,255,0.02)_240deg,transparent_360deg)] mix-blend-screen pointer-events-none -z-10" />

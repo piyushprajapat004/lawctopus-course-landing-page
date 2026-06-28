@@ -21,7 +21,7 @@ export function CurriculumSection() {
   });
 
   return (
-    <section className="relative py-16 md:py-24 lg:py-32 bg-background overflow-hidden border-y border-border/30">
+    <section id="curriculum" className="relative py-16 md:py-24 lg:py-32 bg-background overflow-hidden border-y border-border/30 scroll-mt-32">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-primary/5 via-background to-background pointer-events-none" />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">

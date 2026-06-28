@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 export function InstructorProfilesSection() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-background">
+    <section id="instructors" className="relative py-24 md:py-32 overflow-hidden bg-background scroll-mt-32">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-primary/5 via-background to-background pointer-events-none" />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">

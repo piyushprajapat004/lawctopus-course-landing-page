@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden py-12 sm:py-16 md:py-24 lg:py-32">
+    <section id="hero" className="relative overflow-hidden py-12 sm:py-16 md:py-24 lg:py-32 scroll-mt-32">
       {/* Singular, dramatic edge light — clamped to prevent mobile overflow */}
       <div className="absolute top-[-20%] left-[-10%] w-[600px] md:w-[1000px] h-[600px] md:h-[1000px] bg-primary/10 rounded-full blur-[200px] -z-10 mix-blend-screen opacity-80 pointer-events-none" />
 

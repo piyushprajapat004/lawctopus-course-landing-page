@@ -73,7 +73,7 @@ export function LeadFormSection() {
   };
 
   return (
-    <section id="lead-form" className="relative py-24 md:py-32 pb-32 lg:pb-32 overflow-hidden bg-background">
+    <section id="lead-form" className="relative py-24 md:py-32 pb-32 lg:pb-32 overflow-hidden bg-background scroll-mt-32">
       {/* Blend background from pricing spotlight seamlessly */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-background to-background -z-10 pointer-events-none" />
 
