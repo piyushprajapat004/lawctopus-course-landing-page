@@ -7,6 +7,6 @@ export const navigationContent = {
   ],
   cta: {
     label: "Enroll Now",
-    href: "#pricing",
+    href: "#lead-form",
   },
 };

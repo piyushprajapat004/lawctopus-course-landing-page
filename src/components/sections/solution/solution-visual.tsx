@@ -1,109 +1,109 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Sparkles, Scale } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function SolutionVisual() {
   return (
-    <div className="relative w-full max-w-4xl mx-auto h-[400px] md:h-[500px] mt-16 perspective-1000">
-      {/* Background Glow */}
-      <div className="absolute inset-0 bg-primary/20 rounded-full blur-[120px] scale-110 opacity-70 pointer-events-none" />
+    <div className="relative w-full max-w-4xl mx-auto h-[400px] md:h-[500px] mt-16 perspective-1000 flex items-center justify-center">
+      {/* Background Soft Flare */}
+      <div className="absolute inset-0 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
 
-      {/* Main Backing Card (The Dashboard Shell) */}
+      {/* Abstract Grid Base */}
       <motion.div
-        initial={{ opacity: 0, rotateX: 15, y: 40 }}
-        whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
+        initial={{ opacity: 0, rotateX: 60, scale: 0.8 }}
+        whileInView={{ opacity: 1, rotateX: 45, scale: 1 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className={cn(
-          "absolute inset-x-0 bottom-0 top-12 md:top-24 rounded-t-[2.5rem] border border-white/10 ring-1 ring-inset ring-white/5",
-          "bg-background/60 backdrop-blur-3xl shadow-2xl flex flex-col overflow-hidden"
-        )}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="absolute w-[800px] h-[800px] border border-primary/5 rounded-full"
+        style={{
+          backgroundImage: "linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px)",
+          backgroundSize: "40px 40px"
+        }}
+      />
+
+      {/* Sweeping Path (SVG) */}
+      <motion.svg
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="absolute w-full h-full pointer-events-none overflow-visible"
+        viewBox="0 0 800 400"
       >
-        <div className="h-14 border-b border-border/50 bg-muted/30 flex items-center px-6 gap-3">
-          <div className="flex gap-2">
-            <div className="size-3 rounded-full bg-destructive/60" />
-            <div className="size-3 rounded-full bg-amber-500/60" />
-            <div className="size-3 rounded-full bg-emerald-500/60" />
-          </div>
-          <div className="ml-4 flex gap-4 text-xs font-medium text-muted-foreground">
-            <div className="px-3 py-1 bg-muted/50 rounded-md">Drafting Studio</div>
-            <div className="px-3 py-1 hover:bg-muted/30 rounded-md transition-colors">Templates</div>
-            <div className="px-3 py-1 hover:bg-muted/30 rounded-md transition-colors">Prism AI</div>
-          </div>
-        </div>
-        
-        {/* Fake Code/Text Lines */}
-        <div className="flex-1 p-8 grid grid-cols-1 md:grid-cols-2 gap-8 overflow-hidden">
-          <div className="space-y-4">
-            <div className="h-4 w-3/4 bg-foreground/10 rounded" />
-            <div className="h-4 w-full bg-foreground/5 rounded" />
-            <div className="h-4 w-5/6 bg-foreground/5 rounded" />
-            <div className="h-4 w-full bg-foreground/5 rounded" />
-            <div className="h-4 w-4/6 bg-foreground/5 rounded" />
-          </div>
-          <div className="hidden md:flex flex-col space-y-4 opacity-50">
-            <div className="h-4 w-full bg-primary/10 rounded" />
-            <div className="h-4 w-5/6 bg-primary/10 rounded" />
-            <div className="h-4 w-full bg-primary/10 rounded" />
-            <div className="h-4 w-3/4 bg-primary/10 rounded" />
-          </div>
-        </div>
+        <motion.path
+          d="M 50,300 C 200,300 300,100 500,150 S 700,50 750,100"
+          fill="none"
+          stroke="url(#gradientPath)"
+          strokeWidth="3"
+          strokeDasharray="10 10"
+          initial={{ pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
+        />
+        <defs>
+          <linearGradient id="gradientPath" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="transparent" />
+            <stop offset="50%" stopColor="rgba(var(--primary-rgb), 0.5)" />
+            <stop offset="100%" stopColor="rgba(var(--primary-rgb), 1)" />
+          </linearGradient>
+        </defs>
+      </motion.svg>
+
+      {/* Glowing Nodes */}
+      {/* Node 1: Start */}
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+        className="absolute left-[15%] bottom-[20%] size-8 rounded-full bg-card border border-border/60 shadow-[0_0_20px_rgba(0,0,0,0.5)] flex items-center justify-center z-10"
+      >
+        <div className="size-2.5 rounded-full bg-muted-foreground/50" />
       </motion.div>
 
-      {/* Floating Card 1: Contract Output */}
+      {/* Node 2: Middle */}
       <motion.div
-        initial={{ opacity: 0, x: -30, y: 20 }}
-        whileInView={{ opacity: 1, x: 0, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className={cn(
-          "absolute top-0 left-4 md:left-8 w-64 p-5 rounded-3xl",
-          "border border-white/10 bg-background/80 backdrop-blur-2xl shadow-2xl shadow-black/5 flex flex-col gap-3 ring-1 ring-inset ring-white/10"
-        )}
+        initial={{ scale: 0, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 1.2 }}
+        className="absolute left-[45%] top-[35%] size-12 rounded-full bg-card border border-border/60 shadow-[0_0_30px_rgba(var(--primary-rgb),0.1)] flex items-center justify-center z-10"
       >
-        <div className="flex items-center gap-3 mb-2 border-b border-border/50 pb-3">
-          <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center">
-            <Scale className="size-5 text-primary" />
-          </div>
-          <div>
-            <h4 className="text-sm font-semibold">Commercial Lease</h4>
-            <p className="text-[10px] text-muted-foreground">Generated successfully</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-2 text-xs font-medium text-emerald-600 dark:text-emerald-400">
-          <CheckCircle2 className="size-4" />
-          <span>Indemnity Clause Validated</span>
-        </div>
+        <div className="size-4 rounded-full bg-primary/40 animate-pulse" />
       </motion.div>
 
-      {/* Floating Card 2: AI Assistant */}
+      {/* Node 3: End / Climax */}
       <motion.div
-        initial={{ opacity: 0, x: 30, y: -20 }}
-        whileInView={{ opacity: 1, x: 0, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, delay: 0.4 }}
+        initial={{ scale: 0, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 1.8, type: "spring" }}
+        className="absolute right-[20%] top-[25%] size-20 rounded-full bg-card border border-primary/30 shadow-[0_0_50px_rgba(var(--primary-rgb),0.3)] flex items-center justify-center z-10"
+      >
+        <div className="absolute inset-0 bg-primary/10 rounded-full animate-ping opacity-20" />
+        <div className="size-6 rounded-full bg-primary shadow-[0_0_15px_rgba(var(--primary-rgb),0.8)]" />
+      </motion.div>
+      
+      {/* Floating Insight Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 2.2 }}
         className={cn(
-          "absolute top-8 md:top-4 right-4 md:right-8 w-72 p-6 rounded-3xl",
-          "border border-white/10 bg-background/95 backdrop-blur-3xl shadow-2xl shadow-black/10 flex flex-col gap-3 z-10 ring-1 ring-inset ring-white/10"
+          "absolute right-[10%] md:right-0 bottom-[30%] w-64 p-5 rounded-3xl",
+          "border border-border/60 bg-card shadow-2xl shadow-black/40 flex flex-col gap-2 z-20 backdrop-blur-xl"
         )}
       >
         <div className="flex items-center gap-2 text-primary mb-1">
           <Sparkles className="size-4" />
-          <span className="text-xs font-bold uppercase tracking-wider">Prism AI Suggestion</span>
+          <span className="text-xs font-bold uppercase tracking-wider">Clarity Achieved</span>
         </div>
-        <p className="text-sm leading-relaxed text-muted-foreground border-l-2 border-primary pl-3">
-          &quot;Consider adding a Force Majeure clause here to protect against unforeseen disruptions.&quot;
+        <p className="text-sm font-light text-muted-foreground leading-relaxed">
+          The complex legal landscape simplified into a continuous, clear path to mastery.
         </p>
-        <div className="flex gap-2 mt-2">
-          <div className="px-3 py-1.5 rounded-md bg-primary text-primary-foreground text-xs font-medium cursor-pointer">
-            Accept
-          </div>
-          <div className="px-3 py-1.5 rounded-md bg-muted text-muted-foreground text-xs font-medium cursor-pointer">
-            Dismiss
-          </div>
-        </div>
       </motion.div>
     </div>
   );

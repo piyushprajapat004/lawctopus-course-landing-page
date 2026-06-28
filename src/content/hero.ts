@@ -5,7 +5,7 @@ export const heroContent = {
     "A 6-month advanced intensive with 54 live sessions. Learn to draft 24+ complex contracts, build a standout Upwork profile, and save 4 years of your legal career.",
   primaryCta: {
     label: "Enroll Now",
-    href: "#pricing",
+    href: "#lead-form",
   },
   secondaryCta: {
     label: "View Curriculum",
@@ -14,7 +14,7 @@ export const heroContent = {
   trustIndicators: [
     "20,000+ Learners",
     "93.2/100 Avg Rating",
-    "100% Money Back Guarantee",
+    "100% Money-Back Guarantee",
   ],
   stats: {
     liveSessions: 54,

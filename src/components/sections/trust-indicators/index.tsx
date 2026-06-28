@@ -2,7 +2,7 @@ import { trustContent } from "@/content/trust";
 
 export function TrustIndicators() {
   return (
-    <section className="py-12 border-y border-border/50 bg-muted/10 animate-in fade-in duration-700 ease-in-out">
+    <section className="py-12 md:py-16 border-y border-border/50 bg-muted/10 animate-in fade-in duration-700 ease-in-out">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-center text-sm font-semibold tracking-wider uppercase text-muted-foreground mb-8">
           {trustContent.title}

@@ -9,5 +9,6 @@ export const trustContent = {
     { name: "Omnicom Media Group", src: "" },
     { name: "BookMyShow", src: "" },
     { name: "K Raheja Corp", src: "" },
+    { name: "HSA Advocates", src: "" },
   ],
 };

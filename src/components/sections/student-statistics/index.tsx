@@ -31,18 +31,23 @@ function AnimatedCounter({ value }: { value: number }) {
   }, [inView, springValue, value]);
 
   useEffect(() => {
+    const isDecimal = value % 1 !== 0;
+    
     return springValue.on("change", (latest) => {
-      // Format with commas if over 999
-      setDisplayValue(Intl.NumberFormat("en-US").format(Math.floor(latest)));
+      if (isDecimal) {
+        setDisplayValue(latest.toFixed(1));
+      } else {
+        setDisplayValue(Intl.NumberFormat("en-US").format(Math.floor(latest)));
+      }
     });
-  }, [springValue]);
+  }, [springValue, value]);
 
   return <span ref={ref}>{displayValue}</span>;
 }
 
 export function StudentStatistics() {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {statsContent.stats.map((stat, index) => {
@@ -56,12 +61,12 @@ export function StudentStatistics() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={cn(
-                  "relative flex flex-col items-center justify-center p-8 text-center group",
-                  "rounded-3xl border border-border/30 bg-background/50 backdrop-blur-sm shadow-sm hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-500 overflow-hidden"
+                  "relative flex flex-col items-center justify-center p-8 md:p-10 text-center group h-full w-full",
+                  "rounded-[2rem] border border-border/40 bg-card shadow-sm hover:shadow-xl hover:shadow-black/20 hover:border-border/80 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                 )}
               >
                 {/* Subtle Hover Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 
                 <div className="relative size-14 rounded-full bg-primary/5 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/10 transition-transform duration-500">
                   {IconComponent && <IconComponent className="size-6 text-primary" />}
@@ -72,7 +77,30 @@ export function StudentStatistics() {
                   {stat.suffix && <span className="text-2xl ml-1">{stat.suffix}</span>}
                 </div>
                 
-                <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+                {stat.label === "Average Rating" && (
+                  <div className="flex flex-col items-center mb-4 transition-all duration-300 group-hover:scale-[1.03] group-hover:brightness-110">
+                    <div 
+                      className="flex gap-1 mb-1.5" 
+                      aria-hidden="true"
+                    >
+                      {[...Array(5)].map((_, i) => (
+                        <Star 
+                          key={i} 
+                          className="size-4 text-[#D4AF37] fill-[#D4AF37]/40 drop-shadow-[0_0_8px_rgba(212,175,55,0.4)] opacity-90" 
+                        />
+                      ))}
+                    </div>
+                    <span className="text-xs text-muted-foreground tracking-[0.05em]">
+                      Rated by 20,000+ learners
+                    </span>
+                    <span className="sr-only">Average rating: 93% based on 20,000+ learners.</span>
+                  </div>
+                )}
+                
+                <p className={cn(
+                  "text-sm font-medium text-muted-foreground uppercase tracking-wider",
+                  stat.label === "Average Rating" ? "mt-1" : ""
+                )}>
                   {stat.label}
                 </p>
               </motion.div>

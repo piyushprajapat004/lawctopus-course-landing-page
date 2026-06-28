@@ -1,106 +1,123 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, PlayCircle, BarChart3 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Play, CheckCircle2, Award, Star } from "lucide-react";
+import Image from "next/image";
 
 export function HeroVisual() {
   return (
-    <div className="relative w-full max-w-lg mx-auto aspect-square md:aspect-auto md:h-[500px]">
-      {/* Background Gradient Orb */}
-      <div className="absolute inset-0 bg-primary/20 rounded-full blur-[120px] scale-110 opacity-70" />
+    <div className="relative w-full max-w-2xl mx-auto h-[500px] md:h-[600px] perspective-1000">
+      
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/20 rounded-full blur-[100px] mix-blend-screen" />
 
-      {/* Main Container - Course Platform Preview */}
+      {/* Main Dashboard Mockup */}
       <motion.div
-        initial={{ opacity: 0, y: 20, scale: 0.95 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
+        animate={{ y: [-10, 10, -10] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className={cn(
-          "absolute top-8 left-4 right-4 md:left-8 md:right-8 h-80 rounded-3xl",
-          "border border-white/10 bg-background/40 backdrop-blur-2xl shadow-2xl flex flex-col overflow-hidden ring-1 ring-inset ring-white/5"
+          "absolute top-[10%] left-[5%] md:left-[10%] w-[85%] md:w-[80%] rounded-2xl",
+          "bg-card/80 backdrop-blur-2xl border border-border/50 shadow-2xl overflow-hidden"
         )}
       >
-        {/* Mock Header */}
-        <div className="h-12 border-b border-border/50 flex items-center px-4 gap-2 bg-muted/20">
+        {/* Browser Header */}
+        <div className="flex items-center gap-2 px-4 py-3 border-b border-border/40 bg-muted/30">
           <div className="flex gap-1.5">
-            <div className="size-2.5 rounded-full bg-destructive/50" />
-            <div className="size-2.5 rounded-full bg-amber-500/50" />
-            <div className="size-2.5 rounded-full bg-emerald-500/50" />
+            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+            <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
           </div>
-          <div className="ml-4 h-4 w-32 bg-muted rounded-full" />
+          <div className="mx-auto bg-background/50 rounded-md px-3 py-1 text-[10px] text-muted-foreground font-mono flex items-center gap-2">
+            <span className="w-3 h-3 rounded-full bg-primary/20 flex items-center justify-center">🔒</span>
+            lawctopuslawschool.com/learn
+          </div>
         </div>
-        {/* Mock Content */}
-        <div className="flex-1 p-6 flex flex-col gap-4">
-          <div className="flex items-center gap-4">
-            <div className="size-12 rounded-lg bg-primary/10 flex items-center justify-center">
-              <PlayCircle className="size-6 text-primary" />
-            </div>
+
+        {/* Dashboard Content */}
+        <div className="p-5 md:p-6 flex flex-col gap-4">
+          <div className="flex justify-between items-start mb-2">
             <div>
-              <div className="h-5 w-48 bg-foreground/10 rounded-md mb-2" />
-              <div className="h-3 w-32 bg-muted-foreground/20 rounded-md" />
+              <h3 className="text-lg font-bold text-foreground">Advanced Contract Drafting</h3>
+              <p className="text-xs text-muted-foreground">Module 4: Intellectual Property</p>
+            </div>
+            <div className="px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold tracking-wider uppercase border border-primary/20">
+              65% Completed
             </div>
           </div>
-          <div className="flex-1 border border-border/50 rounded-xl bg-muted/10 mt-2 p-4 flex flex-col gap-3">
-             <div className="h-3 w-full bg-foreground/5 rounded-md" />
-             <div className="h-3 w-5/6 bg-foreground/5 rounded-md" />
-             <div className="h-3 w-4/6 bg-foreground/5 rounded-md" />
+          
+          <div className="w-full bg-muted/50 rounded-full h-1.5 overflow-hidden">
+            <div className="bg-primary h-full w-[65%] rounded-full shadow-[0_0_10px_rgba(var(--primary-rgb),0.5)]" />
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 mt-2">
+            {[
+              { title: "Trademark Licensing", duration: "45 mins", active: true },
+              { title: "Patent Assignment", duration: "60 mins", active: false },
+              { title: "Live Draft Review", duration: "90 mins", active: false }
+            ].map((lesson, i) => (
+              <div key={i} className={cn("p-3 rounded-xl border flex items-center gap-3", lesson.active ? "bg-primary/5 border-primary/30" : "bg-card border-border/40")}>
+                <div className={cn("w-8 h-8 rounded-full flex items-center justify-center shrink-0", lesson.active ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" : "bg-muted text-muted-foreground")}>
+                  {lesson.active ? <Play className="w-4 h-4 fill-current ml-0.5" /> : <CheckCircle2 className="w-4 h-4" />}
+                </div>
+                <div>
+                  <p className={cn("text-xs font-semibold", lesson.active ? "text-foreground" : "text-muted-foreground")}>{lesson.title}</p>
+                  <p className="text-[10px] text-muted-foreground">{lesson.duration}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </motion.div>
 
-      {/* Floating Card 1: Certificate Preview */}
+      {/* Floating Certificate */}
       <motion.div
-        animate={{ y: [-5, 5, -5] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ 
+          y: [-15, 15, -15],
+          rotate: [10, 15, 10]
+        }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         className={cn(
-          "absolute -bottom-4 -left-4 md:-bottom-8 md:-left-8 w-48 p-4 rounded-2xl",
-          "border border-white/10 bg-background/60 backdrop-blur-2xl shadow-2xl shadow-black/10 ring-1 ring-inset ring-white/10"
+          "absolute -bottom-[5%] -right-[5%] md:right-0 w-[60%] md:w-[50%] p-1 rounded-xl",
+          "bg-gradient-to-br from-amber-200 via-yellow-400 to-amber-600 shadow-2xl z-20"
         )}
       >
-        <div className="flex items-center gap-3 mb-2">
-          <Award className="size-5 text-amber-500" />
-          <span className="text-xs font-semibold">Certificate</span>
-        </div>
-        <div className="h-2 w-full bg-muted rounded-full mb-1" />
-        <div className="h-2 w-2/3 bg-muted rounded-full" />
-      </motion.div>
-
-      {/* Floating Card 2: Progress Widget */}
-      <motion.div
-        animate={{ y: [5, -5, 5] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className={cn(
-          "absolute top-20 -right-4 md:-right-12 w-52 p-4 rounded-2xl",
-          "border border-white/10 bg-background/60 backdrop-blur-2xl shadow-2xl shadow-black/10 ring-1 ring-inset ring-white/10"
-        )}
-      >
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-xs font-medium">Course Progress</span>
-          <BarChart3 className="size-4 text-primary" />
-        </div>
-        <div className="w-full bg-muted rounded-full h-1.5 mb-2">
-          <div className="bg-primary h-1.5 rounded-full w-[70%]" />
-        </div>
-        <div className="flex justify-between text-[10px] text-muted-foreground">
-          <span>Module 4 of 6</span>
-          <span>70%</span>
+        <div className="bg-card w-full h-full rounded-lg p-4 md:p-5 flex flex-col items-center text-center relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none" />
+          <Award className="w-10 h-10 text-amber-500 mb-2" />
+          <h4 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1">Certificate of Excellence</h4>
+          <h3 className="text-sm md:text-base font-bold text-foreground font-serif leading-tight">Mastering Contract Drafting</h3>
+          <div className="w-12 h-px bg-border my-2" />
+          <p className="text-[8px] text-muted-foreground">Issued by Lawctopus Law School</p>
         </div>
       </motion.div>
 
-      {/* Floating Card 3: Live Sessions */}
+      {/* Floating Review/Social Proof */}
       <motion.div
-        animate={{ y: [-3, 3, -3] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        animate={{ 
+          y: [15, -15, 15],
+          rotate: [-5, -10, -5]
+        }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         className={cn(
-          "absolute bottom-20 -right-2 md:-right-6 px-4 py-3 rounded-full flex items-center gap-2",
-          "border border-white/10 bg-background/70 backdrop-blur-xl shadow-xl ring-1 ring-inset ring-white/10"
+          "absolute bottom-[15%] -left-[10%] md:left-0 w-[65%] md:w-[55%] p-4 rounded-2xl",
+          "bg-card/90 backdrop-blur-xl border border-border/50 shadow-2xl z-30"
         )}
       >
-        <div className="relative flex h-3 w-3">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+        <div className="flex gap-3 items-start">
+          <div className="w-10 h-10 rounded-full bg-primary/20 shrink-0 overflow-hidden relative">
+            <Image src="https://cdn.lawctopus.com/wp-content/uploads/2024/06/profile-user.png" alt="Student" fill sizes="40px" className="object-cover" />
+          </div>
+          <div>
+            <div className="flex items-center gap-1 mb-1">
+              {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-amber-500 text-amber-500" />)}
+            </div>
+            <p className="text-xs text-foreground font-medium leading-snug">
+              &quot;Landed my first Upwork client within 3 weeks of the course. The MSA templates are a lifesaver.&quot;
+            </p>
+            <p className="text-[10px] text-muted-foreground mt-1 font-medium">Verified Learner • Independent Freelancer</p>
+          </div>
         </div>
-        <span className="text-xs font-medium">54 Live Sessions</span>
       </motion.div>
     </div>
   );
